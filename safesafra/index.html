@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Safra</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main>
+        <header>
+            <h1>🌽 Safe-Safra</h1>
+        </header>
+
+        <section id="dashboard">
+            <h2>Painel de Controle</h2>
+            <div class="card">
+                <p>Produtividade Estimada:</p>
+                <h3 id="produtividade-estimada">0 sacas no total</h3>
+                <p id="produtividade-toneladas" style="color: #555; font-size: 0.9em; margin-top: -15px;"></p>
+                <div id="info-clima" style="margin-top: 15px; font-style: italic; color: #555;">Buscando dados do clima...</div>
+            </div>
+            </section>
+
+        <section id="diario">
+            <h2>Diário de Campo</h2>
+            <button id="btn-novo-registro">➕ Adicionar Registro</button>
+            <div id="lista-registros"></div>
+        </section>
+    </main>
+
+    <div id="modal-registro" class="modal">
+        <div class="modal-content">
+            <form id="form-registro">
+                <h3>Novo Registro no Diário</h3>
+                <div class="modal-body">
+                    <label for="tipo-registro">Tipo de Registro:</label>
+                    <select id="tipo-registro" required>
+                        <option value="" selected disabled>-- Selecione um Tipo --</option> 
+                        <option value="plantio">Plantio</option>
+                        <option value="fertilizacao">Aplicação de Fertilizante</option>
+                        <option value="sintoma">Sintoma de Doença</option>
+                        <option value="praga">Presença de Praga</option>
+                    </select>
+
+                    <label for="data-registro">Data:</label>
+                    <input type="date" id="data-registro" required>
+
+                    <label for="notas-registro">Notas:</label>
+                    <textarea id="notas-registro" rows="3"></textarea>
+
+                    <div id="secao-diagnostico" style="display: none;">
+                        <h4>Diagnóstico de Sintoma</h4>
+                        <label for="local-sintoma">Local do Sintoma:</label>
+                        <select id="local-sintoma">
+                            <option value="folha">Folha</option>
+                            <option value="caule">Caule</option>
+                            <option value="espiga">Espiga</option>
+                        </select>
+                    </div>
+
+                    <div id="secao-plantio" style="display: none;">
+                        <h4>Detalhes do Plantio</h4>
+                        <label for="area-plantada">Área Plantada (em hectares):</label>
+                        <input type="number" id="area-plantada" step="0.1" min="0">
+                        <label for="produtividade-esperada">Estimativa Técnica (sacas/ha):</label>
+                        <input type="number" id="produtividade-esperada" value="120">
+                    </div>
+                    <div class="modal-actions">
+                    <button type="submit">Salvar</button>
+                    <button type="button" id="btn-cancelar">Cancelar</button>
+                </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

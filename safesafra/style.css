@@ -1,0 +1,244 @@
+/* Estilo geral do corpo da página */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5; /* Cor de fundo principal */
+    color: #3d405b;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff; /* Branco sólido, em vez de transparente */
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative; /* Necessário para garantir que fique na frente da moldura */
+    z-index: 1; /* Necessário para garantir que fique na frente da moldura */
+}
+
+/* ===== MOLDURA DE IMAGEM NAS LATERAIS ===== */
+
+/* Garante que a página ocupe toda a altura */
+html {
+    height: 100%;
+}
+
+/* Prepara o body para conter os pseudo-elementos */
+body {
+    position: relative;
+    min-height: 100%;
+}
+
+/* Cria os painéis da imagem de fundo */
+body::before,
+body::after {
+    content: '';
+    position: fixed; /* Fixo na tela */
+    top: 0;
+    width: 50%; /* Cada um ocupa metade da tela */
+    height: 100%;
+    z-index: -1; /* Coloca os painéis atrás de todo o conteúdo */
+
+    /* A mesma imagem de fundo para ambos */
+    background-image: url('images/milharal4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Painel da esquerda: mostra a parte esquerda da imagem */
+body::before {
+    left: 0;
+    background-position: left center;
+}
+
+/* Painel da direita: mostra a parte direita da imagem */
+body::after {
+    right: 0;
+    background-position: right center;
+}
+
+section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* --- A PARTE MAIS IMPORTANTE DA CORREÇÃO --- */
+
+/* O Fundo escuro do Modal */
+.modal {
+    display: none; /* Começa escondido por padrão */
+    position: fixed; /* Fica fixo na tela */
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Efeito de sombra */
+}
+
+/* O conteúdo do formulário (a caixa branca) */
+/* Modifique a regra .modal-content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* Diminui a margem para dar mais espaço */
+    padding: 0; /* Remove o padding antigo */
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    display: flex; /* Habilita o Flexbox */
+    flex-direction: column; /* Organiza os itens em coluna */
+    max-height: 100vh; /* Define uma altura máxima de 85% da tela */
+}
+
+/* Adicione esta nova regra para o corpo do modal */
+.modal-body {
+    padding: 20px; /* Adiciona o padding que removemos do pai */
+    overflow-y: auto; /* A MÁGICA ACONTECE AQUI: Adiciona a barra de rolagem apenas nesta área */
+}
+
+/* Modifique a regra .modal-actions */
+.modal-actions {
+    text-align: right;
+    
+    border-top: 1px solid #eee; /* Cria uma linha divisória */
+}
+
+/* Adicione esta regra para o H3 do modal */
+#form-registro h3 {
+    padding: 15px 20px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    
+}
+
+/* Estilizando os campos do formulário para melhor visualização */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.item-registro {
+    border: 1px solid #ddd;
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.item-registro h4 {
+    margin-top: 0;
+}
+
+.btn-excluir {
+    background-color: #dc3545; /* Cor vermelha para indicar perigo/exclusão */
+    font-size: 12px;
+    padding: 5px 10px;
+    float: right; /* Alinha o botão à direita do card */
+    margin-left: 10px;
+}
+
+.btn-excluir:hover {
+    background-color: #c82333;
+}
+
+/* ===== NOVOS ESTILOS DO TEMA ===== */
+
+/* Define as cores principais em variáveis para fácil manutenção */
+:root {
+    --verde-principal: #2a9d8f;
+    --verde-escuro: #264653;
+    --amarelo-destaque: #e9c46a;
+    --vermelho-excluir: #e76f51;
+    --vermelho-excluir-hover: #f4a261;
+}
+
+header h1 {
+    color: var(--verde-escuro);
+}
+
+/* Estilo para todos os botões principais */
+button, 
+button[type="submit"] {
+    background-color: var(--verde-principal);
+    font-weight: bold;
+    text-transform: uppercase; /* Deixa o texto em maiúsculas */
+    letter-spacing: 0.5px; /* Adiciona um pequeno espaçamento */
+    transition: background-color 0.2s ease-in-out; /* Animação suave */
+}
+
+button:hover, 
+button[type="submit"]:hover {
+    background-color: var(--verde-escuro);
+}
+
+/* Borda lateral dos cards */
+.item-registro {
+    border-left: 5px solid var(--verde-principal);
+}
+
+/* Botão de excluir com a nova cor */
+.btn-excluir {
+    background-color: var(--vermelho-excluir);
+    text-transform: none; /* Mantém o texto normal */
+    font-weight: normal;
+}
+
+.btn-excluir:hover {
+    background-color: var(--vermelho-excluir-hover);
+}
+
+/* Pequeno detalhe visual para o card do clima */
+#info-clima {
+    border-top: 1px dashed #ccc;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+
+
+#secao-diagnostico,
+#secao-plantio {
+    border-top: 1px solid #eee;
+    
+    overflow: auto;
+}
+#secao-diagnostico h4, #secao-plantio h4 {
+    margin-top: 0;
+    overflow: auto;
+}
+#secao-diagnostico label, #secao-plantio label {
+    display: block; /* A linha mais importante: força o label a quebrar a linha*/
+    overflow: auto;
+}
